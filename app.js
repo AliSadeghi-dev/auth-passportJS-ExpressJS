@@ -3,6 +3,7 @@ var expressLayouts = require("express-ejs-layouts");
 const flash = require('express-flash');
 const session = require('express-session');
 const { default: mongoose } = require('mongoose');
+const { notFoundError, errorHandler } = require('./error-handling');
 const AllRoutes = require('./router/index');
 
 const app = express();
@@ -19,6 +20,8 @@ app.use(flash());
 app.use(expressLayouts);
 app.set("view engine", "ejs");
 app.set("layout", "./layout/main.ejs");
+// app.use(notFoundError);
+// app.use(errorHandler);
 
 //set up session
 app.use(session({
